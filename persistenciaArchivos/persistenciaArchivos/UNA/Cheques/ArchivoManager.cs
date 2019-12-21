@@ -24,7 +24,7 @@ namespace persistenciaArchivos.UNA.Cheques
             {
                 foreach (Cheque cheque in ChequesList) 
                 { 
-                    var line =  $"{cheque.Nombre},{cheque.Numero},{cheque.Monto},{cheque.Descripcion}";
+                    var line =  $"{cheque.Emisor},{cheque.Receptor},{cheque.Fecha},{cheque.Numero},{cheque.Monto},{cheque.InstitucionFinanciera},{cheque.Descripcion}, {cheque.Moneda}";
                     streamWriter.WriteLine(line);
                 }
                     streamWriter.Flush();

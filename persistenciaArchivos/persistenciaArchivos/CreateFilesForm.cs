@@ -34,7 +34,7 @@ namespace persistenciaArchivos
 
         private void LimpiarInterfaz()
         {
-            NombreTextBox.Text = "";
+            EmisorTextBox.Text = "";
             NumeroChequeTextBox.Text = "";
             MontoTextBox.Text = "";
             DescripcionTextBox.Text = "";
@@ -45,7 +45,7 @@ namespace persistenciaArchivos
             if (InformacionEsValida())
             {
                 Cheque cheque = RellenarCheque();
-                ChequesDataGridView.Rows.Add(cheque.Nombre, cheque.Numero, cheque.Monto, cheque.Descripcion);
+                ChequesDataGridView.Rows.Add(cheque.Emisor, cheque.Receptor, cheque.Fecha, cheque.Numero, cheque.Monto, cheque.InstitucionFinanciera, cheque.Descripcion, cheque.Moneda);
             }
 
         }
@@ -54,10 +54,15 @@ namespace persistenciaArchivos
         {
             LimpiarErrorProviders();
             bool esValida = true;
-            if (NombreTextBox.Text.Length < 3)
+            if (EmisorTextBox.Text.Length < 3)
             {
                 esValida = false;
-                ErrorProvider.SetError(NombreTextBox, "Debe especificar un nombre de más de 3 caracteres");
+                ErrorProvider.SetError(EmisorTextBox, "Debe especificar un nombre de más de 3 caracteres");
+            }
+            if (ReceptorTextBox.Text.Length < 3)
+            {
+                esValida = false;
+                ErrorProvider.SetError(ReceptorTextBox, "Debe especificar un nombre de más de 3 caracteres");
             }
             if (NumeroChequeTextBox.Text.Length < 5)
             {
@@ -69,6 +74,11 @@ namespace persistenciaArchivos
             {
                 esValida = false;
                 ErrorProvider.SetError(MontoTextBox, "Debe especificar un monto númerico");
+            }
+            if (InstitucionTextBox.Text.Length < 3)
+            {
+                esValida = false;
+                ErrorProvider.SetError(InstitucionTextBox, "Debe especificar una Institucion de más de 10 caracteres");
             }
             if (DescripcionTextBox.Text.Length < 10)
             {
@@ -87,10 +97,14 @@ namespace persistenciaArchivos
         {
             return new Cheque
             {
-                Nombre = NombreTextBox.Text,
-                Numero = NumeroChequeTextBox.Text,
+                Emisor = EmisorTextBox.Text,
+                Receptor = ReceptorTextBox.Text,
+                Fecha = FechaDateTime.Value,
+                Numero = Convert.ToDouble(NumeroChequeTextBox.Text),
                 Monto = Convert.ToDouble(MontoTextBox.Text),
+                InstitucionFinanciera = InstitucionTextBox.Text,
                 Descripcion = DescripcionTextBox.Text,
+                Moneda = MonedaComboBox.SelectedItem.ToString()
             };
         }
 
@@ -156,10 +170,12 @@ namespace persistenciaArchivos
 
         private void LimpiarErrorProviders()
         {
-            ErrorProvider.SetError(NombreTextBox, "");
+            ErrorProvider.SetError(EmisorTextBox, "");
             ErrorProvider.SetError(NumeroChequeTextBox, "");
             ErrorProvider.SetError(MontoTextBox, "");
             ErrorProvider.SetError(DescripcionTextBox, "");
+            ErrorProvider.SetError(InstitucionTextBox, "");
+            ErrorProvider.SetError(ReceptorTextBox, "");
 
             ErrorProvider.SetError(ChequesDataGridView, "");
             InformationProvider.SetError(CrearArchivoButton, "");
@@ -171,14 +187,19 @@ namespace persistenciaArchivos
         {
             for (int rowIndex = 0; rowIndex < ChequesDataGridView.Rows.Count ; rowIndex++)
             {
-                string descripcionEncriptada = Encriptacion.EncriptarString(ChequesDataGridView.Rows[rowIndex].Cells[3].Value.ToString(),userPassword);
-                 
+                string descripcionEncriptada = Encriptacion.EncriptarString(ChequesDataGridView.Rows[rowIndex].Cells[6].Value.ToString(),userPassword);
+
                 archivoManager.ChequesList.Add(new Cheque
                 {
-                    Nombre = ChequesDataGridView.Rows[rowIndex].Cells[0].Value.ToString(),
-                    Numero = ChequesDataGridView.Rows[rowIndex].Cells[1].Value.ToString(),
-                    Monto = Convert.ToDouble(ChequesDataGridView.Rows[rowIndex].Cells[2].Value.ToString()),
+                    Emisor = ChequesDataGridView.Rows[rowIndex].Cells[0].Value.ToString(),
+                    Receptor = ChequesDataGridView.Rows[rowIndex].Cells[1].Value.ToString(),
+                    Fecha = Convert.ToDateTime(ChequesDataGridView.Rows[rowIndex].Cells[2].Value.ToString()),
+                    Numero = Convert.ToDouble(ChequesDataGridView.Rows[rowIndex].Cells[3].Value.ToString()),
+                    Monto = Convert.ToDouble(ChequesDataGridView.Rows[rowIndex].Cells[4].Value.ToString()),
+                    InstitucionFinanciera = ChequesDataGridView.Rows[rowIndex].Cells[5].Value.ToString(),
                     Descripcion = descripcionEncriptada,
+                    Moneda = ChequesDataGridView.Rows[rowIndex].Cells[7].Value.ToString(),
+                    
                 });
             }
         }
@@ -196,5 +217,11 @@ namespace persistenciaArchivos
             }
         }
 
+        private void NombreLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
