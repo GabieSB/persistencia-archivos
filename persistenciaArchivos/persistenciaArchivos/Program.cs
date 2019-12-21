@@ -16,7 +16,7 @@ namespace persistenciaArchivos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateFilesForm());
+            Application.Run(new Incio());
         }
     }
 }

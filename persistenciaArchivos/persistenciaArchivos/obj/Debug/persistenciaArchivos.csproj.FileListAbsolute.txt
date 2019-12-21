@@ -11,9 +11,11 @@ C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenc
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\bin\Debug\persistenciaArchivos.exe
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\bin\Debug\persistenciaArchivos.pdb
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.csprojAssemblyReference.cache
-C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.CreateFilesForm.resources
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.Properties.Resources.resources
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.csproj.GenerateResource.cache
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.csproj.CoreCompileInputs.cache
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.exe
 C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.pdb
+C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\Cheques.ControlCheques.resources
+C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.Incio.resources
+C:\Users\604450844\Desktop\persistencia-archivos\persistenciaArchivos\persistenciaArchivos\obj\Debug\persistenciaArchivos.CreateFilesForm.resources
